@@ -1,0 +1,215 @@
+body {
+  margin: 0;
+  background-color: #111;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px 20px 50px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 24px;
+  color: gold;
+}
+
+.logo p {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+nav a:hover,
+nav a:focus {
+  color: gold;
+}
+
+main {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.centered-text h2 {
+  font-size: 57px;
+  margin: 0;
+  color: gold;
+}
+
+.centered-text p {
+  font-size: 35px;
+  margin-top: 5px;
+}
+
+.robot-image {
+  width: 60%;
+  max-width: 700px;
+  margin-top: 10px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.social-icons img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+.season-page {
+  text-align: center;
+  color: white;
+  background-color: #111;
+  padding: 50px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.season-page h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: white;
+}
+
+.section-title {
+  font-size: 24px;
+  color: gold;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.video-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.video-grid iframe {
+  width: 320px;
+  height: 180px;
+  border-radius: 8px;
+  border: none;
+}
+
+.achievements {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 16px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.achievements strong {
+  font-weight: bold;
+  color: white;
+}
+/* Outreach Grid Styling */
+.outreach-page {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.outreach-page h1 {
+  font-size: 36px;
+  color: gold;
+  margin-bottom: 40px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.grid-item {
+  background-color: #222;
+  border: 2px solid gold;
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  color: white;
+}
+
+.grid-item h2 {
+  margin: 0;
+  font-size: 20px;
+  color: gold;
+}
+
+.grid-item p {
+  margin-top: 15px;
+  display: none;
+  color: #ddd;
+  line-height: 1.4;
+}
+
+.grid-item.expanded {
+  background-color: #333;
+}
+
+.grid-item.expanded p {
+  display: block;
+}
+
+/* General heading styles */
+h1 {
+  color: #DFC5FE;
+  text-align: left;
+  font-size: 65px;
+  line-height: 1;
+  margin-top: 75px;
+  margin-bottom: 0px;
+}
+
+h2 {
+  color: aquamarine;
+  margin-bottom: 40px;
+}
+
+/* Social icons container for other pages */
+.social-icons-container {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 20px;
+}
