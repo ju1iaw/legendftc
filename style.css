@@ -229,3 +229,180 @@ h2 {
   gap: 25px;
   margin-bottom: 20px;
 }
+
+/* Team page styles */
+.team-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 60px 20px;
+}
+
+.season-section {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.season-section h2 {
+  font-size: 2rem;
+  color: gold;
+  margin-bottom: 18px;
+}
+
+.team-group-photo {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  margin-bottom: 10px;
+}
+
+.current-members {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.current-members h2 {
+  font-size: 2rem;
+  color: aquamarine;
+  margin-bottom: 32px;
+}
+
+.member-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+
+.member-card {
+  background: #181818;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  padding: 28px 22px 18px 22px;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.member-card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.28);
+}
+
+.member-photo {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgb(255, 255, 255);
+  margin-bottom: 16px;
+  background: #222;
+}
+
+.member-card h3 {
+  margin: 0 0 6px 0;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.member-card p {
+  margin: 0;
+  color: #ccc;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Sponsors page styles */
+.sponsors-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+.sponsors-page h1 {
+  color: gold;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.sponsor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+}
+
+.sponsor-card {
+  display: flex;
+  align-items: center;
+  background: #181818;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  padding: 24px 32px;
+  min-width: 320px;
+  max-width: 900px;
+  width: 100%;
+  gap: 28px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.sponsor-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.sponsor-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  margin-right: 18px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+}
+
+.sponsor-info {
+  text-align: left;
+}
+
+.sponsor-info h2 {
+  margin: 0 0 8px 0;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.sponsor-info p {
+  margin: 0;
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Role color coding */
+.role {
+  font-weight: bold;
+}
+.role.outreach {
+  color: gold;
+}
+.role.hardware {
+  color: #e74c3c;
+}
+.role.software {
+  color: #3498db;
+}
+
+.sponsors-page a {
+  color: gold;
+  text-decoration: none;
+}
+
+.sponsors-page a:hover {
+  color: #ffd700;
+  text-decoration: underline;
+}
