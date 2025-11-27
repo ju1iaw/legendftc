@@ -167,91 +167,229 @@ main {
   font-size: 36px;
   color: gold;
   margin-bottom: 40px;
+  text-align: center;
 }
 
-/* Major Projects Section */
-.major-projects {
-  margin-bottom: 60px;
-}
-
-.major-projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+/* Sorting Controls */
+.sorting-controls {
+  display: flex;
+  justify-content: center;
   gap: 30px;
-  max-width: 1200px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.sort-group, .filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-group label, .filter-group label {
+  color: #ccc;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.sort-group select, .filter-group select {
+  background-color: #333;
+  color: white;
+  border: 2px solid #555;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sort-group select:focus, .filter-group select:focus {
+  outline: none;
+  border-color: gold;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Initiatives Grid */
+.initiatives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-.project-card {
+.initiative-card {
   background-color: #222;
-  border: 2px solid gold;
+  border: 2px solid #444;
   border-radius: 16px;
-  padding: 30px;
+  padding: 25px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
   text-align: left;
   color: white;
   min-height: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
-.project-card h3 {
+.initiative-card:hover {
+  border-color: #666;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.initiative-card.expanded {
+  background-color: #2a2a2a;
+  border-color: gold;
+  min-height: 300px;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  gap: 15px;
+}
+
+.card-header h3 {
   margin: 0;
-  font-size: 24px;
+  font-size: 20px;
   color: gold;
+  line-height: 1.3;
+  flex: 1;
+}
+
+/* Type Badges */
+.type-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.type-social {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.type-mentor {
+  background-color: #28a745;
+  color: white;
+}
+
+.type-first {
+  background-color: #ff6b35;
+  color: white;
+}
+
+.type-community {
+  background-color: #6f42c1;
+  color: white;
+}
+
+.type-fundraising {
+  background-color: #fd7e14;
+  color: white;
+}
+
+/* Card Content */
+.card-content {
+  flex: 1;
+}
+
+.card-content .description {
+  color: #ddd;
+  line-height: 1.6;
+  font-size: 14px;
   margin-bottom: 15px;
 }
 
-.project-card p {
-  margin-top: 15px;
-  display: none;
-  color: #ddd;
-  line-height: 1.6;
-  font-size: 16px;
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
 }
 
-.project-card.expanded {
-  background-color: #333;
-  min-height: 250px;
+.date-range {
+  color: #999;
+  font-size: 13px;
+  font-weight: 500;
 }
 
-.project-card.expanded p {
-  display: block;
-}
-
-/* Regular Events Section */
-.regular-events {
-  margin-top: 40px;
-}
-
-.events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.event-card {
-  background-color: #222;
-  border: 2px solid #444;
-  border-radius: 12px;
-  padding: 20px;
-  cursor: pointer;
+/* Card Details (Expanded) */
+.card-details {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #444;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  text-align: left;
-  color: white;
-  min-height: 150px;
 }
 
-.event-card h3 {
-  margin: 0;
-  font-size: 18px;
+.card-details.hidden {
+  display: none;
+}
+
+.details-content h4 {
+  color: gold;
+  font-size: 16px;
+  margin: 0 0 10px 0;
+}
+
+.details-content p {
   color: #ccc;
-  margin-bottom: 10px;
+  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.details-content .impact {
+  background-color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 4px solid gold;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Outreach Page Links */
+.outreach-page a {
+  color: white;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.outreach-page a:hover {
+  color: gold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sorting-controls {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .initiatives-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .type-badge {
+    align-self: flex-start;
+  }
 }
 
 .event-card p {
