@@ -72,6 +72,24 @@ document.addEventListener('DOMContentLoaded', function() {
     if (activeContent) activeContent.classList.add('active');
   }
   
+  // Populate All Videos tab with videos from all categories, sorted by upload date (most recent first)
+  function populateAllVideosGrid() {
+    const allVideosGrid = document.getElementById('all-videos-grid');
+    if (!allVideosGrid) return;
+    
+    const videoItems = document.querySelectorAll('#hardware-content .video-item, #software-content .video-item, #outreach-content .video-item');
+    const videosWithDates = Array.from(videoItems).map(item => ({
+      element: item.cloneNode(true),
+      date: item.getAttribute('data-upload-date') || '1970-01-01'
+    }));
+    
+    videosWithDates.sort((a, b) => b.date.localeCompare(a.date));
+    
+    allVideosGrid.innerHTML = '';
+    videosWithDates.forEach(({ element }) => allVideosGrid.appendChild(element));
+  }
+  populateAllVideosGrid();
+  
   // Video search functionality
   const videoSearchInput = document.getElementById('video-search');
   const subTabsContainer = document.getElementById('sub-tabs-container');

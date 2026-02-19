@@ -43,13 +43,18 @@
         </div>
         <div class="sub-tabs-container" id="sub-tabs-container">
           <div class="sub-tabs">
-            <button class="sub-tab-button active" data-sub-tab="hardware">Hardware</button>
+            <button class="sub-tab-button active" data-sub-tab="all">All Videos</button>
+            <button class="sub-tab-button" data-sub-tab="hardware">Hardware</button>
             <button class="sub-tab-button" data-sub-tab="software">Software</button>
             <button class="sub-tab-button" data-sub-tab="outreach">Outreach</button>
-            <button class="sub-tab-button" data-sub-tab="general">General</button>
           </div>
           
-          <div class="sub-tab-content active" id="hardware-content">
+          <div class="sub-tab-content active" id="all-content">
+            <h3>All Videos</h3>
+            <div class="videos-grid" id="all-videos-grid"></div>
+          </div>
+          
+          <div class="sub-tab-content" id="hardware-content">
             <h3>Hardware Tutorials</h3>
             <p>Hardware tutorial content will be added here.</p>
           </div>
@@ -62,18 +67,13 @@
           <div class="sub-tab-content" id="outreach-content">
             <h3>Outreach Tutorials</h3>
             <div class="videos-grid">
-              <div class="video-item">
+              <div class="video-item" data-upload-date="2025-01-15">
                 <h4>EFFECTIVE GRANT WRITING for FTC teams: filling out grant applications for funding | LegendLearn Outreach</h4>
                 <div class="video-container">
                   <iframe src="https://www.youtube.com/embed/5GTvevZ8BrY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div class="sub-tab-content" id="general-content">
-            <h3>General Tutorials</h3>
-            <p>General tutorial content will be added here.</p>
           </div>
         </div>
       </div>
