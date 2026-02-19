@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Season | Team Legend</title>
+  <title>Video Tutorials | LegendLearn</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -34,7 +34,14 @@
       </div>
       
       <div class="tab-content active" id="ftc-content">
-        <div class="sub-tabs-container">
+        <div class="video-search-container">
+          <input type="text" id="video-search" class="video-search-input" placeholder="Search videos by title...">
+        </div>
+        <div id="search-results-container" class="search-results-container hidden">
+          <h3>Search Results</h3>
+          <div class="videos-grid" id="search-results-grid"></div>
+        </div>
+        <div class="sub-tabs-container" id="sub-tabs-container">
           <div class="sub-tabs">
             <button class="sub-tab-button active" data-sub-tab="hardware">Hardware</button>
             <button class="sub-tab-button" data-sub-tab="software">Software</button>
@@ -54,7 +61,14 @@
           
           <div class="sub-tab-content" id="outreach-content">
             <h3>Outreach Tutorials</h3>
-            <p>Outreach tutorial content will be added here.</p>
+            <div class="videos-grid">
+              <div class="video-item">
+                <h4>EFFECTIVE GRANT WRITING for FTC teams: filling out grant applications for funding | LegendLearn Outreach</h4>
+                <div class="video-container">
+                  <iframe src="https://www.youtube.com/embed/5GTvevZ8BrY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
           </div>
           
           <div class="sub-tab-content" id="general-content">

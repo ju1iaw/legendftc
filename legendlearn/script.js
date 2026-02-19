@@ -71,4 +71,48 @@ document.addEventListener('DOMContentLoaded', function() {
     if (activeButton) activeButton.classList.add('active');
     if (activeContent) activeContent.classList.add('active');
   }
+  
+  // Video search functionality
+  const videoSearchInput = document.getElementById('video-search');
+  const subTabsContainer = document.getElementById('sub-tabs-container');
+  const searchResultsContainer = document.getElementById('search-results-container');
+  const searchResultsGrid = document.getElementById('search-results-grid');
+  
+  if (videoSearchInput) {
+    videoSearchInput.addEventListener('input', function() {
+      const searchQuery = this.value.toLowerCase().trim();
+      
+      if (searchQuery === '') {
+        // Show tabs, hide search results
+        if (subTabsContainer) subTabsContainer.classList.remove('hidden');
+        if (searchResultsContainer) searchResultsContainer.classList.add('hidden');
+      } else {
+        // Hide tabs, show search results
+        if (subTabsContainer) subTabsContainer.classList.add('hidden');
+        if (searchResultsContainer) searchResultsContainer.classList.remove('hidden');
+        
+        // Collect all matching videos from all categories
+        const allVideoItems = document.querySelectorAll('#hardware-content .video-item, #software-content .video-item, #outreach-content .video-item');
+        const matchingVideos = [];
+        
+        allVideoItems.forEach(item => {
+          const titleElement = item.querySelector('h4');
+          if (titleElement) {
+            const title = titleElement.textContent.toLowerCase();
+            if (title.includes(searchQuery)) {
+              matchingVideos.push(item.cloneNode(true));
+            }
+          }
+        });
+        
+        // Clear and populate search results
+        if (searchResultsGrid) {
+          searchResultsGrid.innerHTML = '';
+          matchingVideos.forEach(video => {
+            searchResultsGrid.appendChild(video);
+          });
+        }
+      }
+    });
+  }
 });
