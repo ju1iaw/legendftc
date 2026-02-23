@@ -403,7 +403,7 @@ main {
 .event-card.expanded {
   background-color: #333;
   border-color: #666;
-  min-height: 180px;
+  min-height: 100px;
 }
 
 .event-card.expanded p {
@@ -685,4 +685,24 @@ h2 {
   min-height: 38px;
   line-height: 1.3;
   transition: color 0.3s;
+}
+
+/* Visit LegendLearn button */
+.visit-legendlearn-btn {
+  display: inline-block;
+  margin: 2em auto;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  color: white;
+  background: #0071bc;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.visit-legendlearn-btn:hover {
+  background: #005a9e;
+  transform: scale(1.05);
 }
