@@ -200,7 +200,8 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: 320px;
+  min-height: 130px;
+  justify-content: space-between;
 }
 
 .fll-card {
@@ -404,6 +405,148 @@ main {
   color: white;
   text-align: center;
   padding: 50px 20px;
+}
+
+/* Booking Mentorships Section */
+.booking-mentorships {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 60px 20px;
+  text-align: center;
+}
+
+.booking-mentorships h2 {
+  color: gold;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.booking-description {
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.schedule-link {
+  display: inline-block;
+  padding: 15px 40px;
+  background: gold;
+  color: #181818;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.schedule-link:hover {
+  background: #ffd700;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+}
+
+.schedule-link:active {
+  transform: translateY(0);
+}
+
+/* Recent Mentorships Section */
+.recent-mentorships {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.recent-mentorships h2 {
+  color: gold;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.mentorships-gallery {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: gold #333;
+}
+
+.mentorships-gallery::-webkit-scrollbar {
+  height: 8px;
+}
+
+.mentorships-gallery::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 4px;
+}
+
+.mentorships-gallery::-webkit-scrollbar-thumb {
+  background: gold;
+  border-radius: 4px;
+}
+
+.mentorships-gallery::-webkit-scrollbar-thumb:hover {
+  background: #ffd700;
+}
+
+.mentorship-card {
+  flex: 0 0 350px;
+  background: #181818;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mentorship-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.mentorship-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  background: #222;
+}
+
+.mentorship-title {
+  color: gold;
+  font-size: 1.3rem;
+  margin: 0 0 10px 0;
+  text-align: left;
+}
+
+.mentorship-description {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .mentorship-card {
+    flex: 0 0 280px;
+  }
+  
+  .recent-mentorships h2 {
+    font-size: 2rem;
+  }
 }
 
 
