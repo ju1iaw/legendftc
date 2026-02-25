@@ -26,10 +26,19 @@
   <main>
     <div class="centered-text">
       <h2>Team Legend</h2>
-      <p> FTC #21227</p>
+      <p>FTC #21227</p>
     </div>
     
-    <img src="media/homepage_robot.png" alt="robot" class="robot-image">
+    <div class="slideshow-wrapper-outer">
+      <button class="slideshow-arrow prev" onclick="changeSlide(-1)">❮</button>
+      <div class="slideshow-container">
+        <div class="slideshow-wrapper">
+          <img src="media/homepage_robot.png" alt="robot" class = "slide">
+          <img src="legendlearn/media/020726MVQT.JPG" alt="mountain view qualifier 2026" class="slide active">
+        </div>
+      </div>
+      <button class="slideshow-arrow next" onclick="changeSlide(1)">❯</button>
+    </div>
     <div class="social-icons">
       <a href="http://instagram.com/legendftc" target="_blank"><img src="media/instagram.png" alt="instagram"></a>
       <a href="https://www.youtube.com/@legendftc" target="_blank"><img src="media/youtube.png" alt="youtube"></a>
@@ -51,18 +60,50 @@
         <a href="team.html" class="view-more-btn">View More</a>
       </div>
       <div class="expandable-box">
-        <img src="media/outreach_page.png" alt="LegendLearn" class="box-image">
-        <div class="box-label">LegendLearn</div>
+        <img src="media/outreach_page.png" alt="Outreach" class="box-image">
+        <div class="box-label">Outreach</div>
         <div class="box-desc">Our impact beyond FTC.</div>
         <a href="LegendLearn.html" class="view-more-btn">View More</a>
       </div>
     </div>
     <div class="about-us">
       <p>
-        Legend is a 4th-year robotics team of middle and high schoolers based in Fremont, CA, competing in the FIRST Tech Challenge. From entering the competition as rookies in 2022 to achieving our impressive global rankings in the 2025 season, we've grown as individuals and as a team through the competition. We proudly represent the values of FIRST in our community while maintaining robotics excellence.
+        Legend is a 4th-year robotics team based in Fremont, CA, competing in the FIRST Tech Challenge. From our rookie season (2022) to the present, we've grown as individuals and as a team through FIRST. Currently, we're ranked among the top teams in NorCal and the world. We strive to maintain robotics excellence and community impact with the values of FIRST.
       </p>
     </div>
 
   </main>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    
+    function showSlide(index) {
+      // Wrap around if out of bounds
+      if (index >= slides.length) {
+        currentSlide = 0;
+      } else if (index < 0) {
+        currentSlide = slides.length - 1;
+      } else {
+        currentSlide = index;
+      }
+      
+      // Hide all slides
+      slides.forEach(slide => slide.classList.remove('active'));
+      
+      // Show current slide
+      if (slides[currentSlide]) {
+        slides[currentSlide].classList.add('active');
+      }
+    }
+    
+    function changeSlide(direction) {
+      showSlide(currentSlide + direction);
+    }
+    
+    // Initialize: show first slide (robot image)
+    document.addEventListener('DOMContentLoaded', function() {
+      showSlide(0);
+    });
+  </script>
 </body>
 </html>

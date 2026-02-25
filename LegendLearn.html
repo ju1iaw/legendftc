@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Team Legend - Outreach</title>
+  <title>Team Legend - LegendLearn</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,10 +23,44 @@
     </nav>
   </header>
 
-  <!-- Outreach Content -->
+  <!-- LegendLearn Content -->
   <main class="outreach-page">
-    <p>page in progress, coming soon</p>
-    <a href="legendlearn/index.html" target="_blank" rel="noopener noreferrer" class="visit-legendlearn-btn" style="display:inline-block;margin:2em auto;padding:1em 2em;font-size:1.2em;color:white;background:#0071bc;border:none;border-radius:8px;text-decoration:none;text-align:center;">Visit LegendLearn site</a>
+    <p>Check out our latest project, LegendLearn, designed to increase competition robotics accessibility!</p>
+    <a href="legendlearn/index.html" target="_blank" rel="noopener noreferrer" class="visit-legendlearn-btn">Visit LegendLearn site</a>
+    
+    <div class="events-section">
+      <h2>Upcoming Events</h2>
+      <ul class="events-list" id="upcoming-events">
+        <!-- Events will be automatically sorted here -->
+      </ul>
+      
+      <h2>Past Events</h2>
+      <ul class="events-list" id="past-events">
+        <!-- Events will be automatically sorted here -->
+      </ul>
+    </div>
+    
+    <!-- All events stored here with data-date attribute (YYYY-MM-DD format) -->
+    <div id="all-events-data" style="display: none;">
+      <div class="event-item" data-date="2026-02-26" data-display-date="February 26, 2025">
+        <div class="event-header">
+          <span class="event-arrow">▶</span>
+          <span class="event-title">Legend FTC: Open Garage</span>
+          <span class="event-date">February 26, 2026</span>
+        </div>
+        <p class="event-description">Come visit our garage, where we design, build, and test our robot. We'll give a short presentation and answer any questions about FIRST, robotics, and our team. For more details: <a target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NGZlbHFyYW40c2lpZDI2dWVmbWpxZ3Q2ZnQgdGVhbWxlZ2VuZGZ0Y0Bt&amp;tmsrc=teamlegendftc%40gmail.com"> Calendar link</a><p>
+      </div>
+      <div class="event-item" data-date="2026-01-20" data-display-date="January 20, 2025">
+        <div class="event-header">
+          <span class="event-arrow">▶</span>
+          <span class="event-title">We're still updating our page to include all past events.</span>
+          <span class="event-date">January 20, 2026</span>
+        </div>
+        <p class="event-description">This is a sample description for a past event. Replace this with actual event details.</p>
+      </div>
+      <!-- Add more events here with data-date="YYYY-MM-DD" and data-display-date="Month Day, Year" -->
+    </div>
   </main>
+  <script src="script.js"></script>
 </body>
 </html>
