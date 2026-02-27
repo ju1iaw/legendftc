@@ -105,6 +105,26 @@ main {
   line-height: 1.6;
 }
 
+.intro-link-red {
+  color: #dc3545;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.intro-link-red:hover {
+  color: #c82333;
+}
+
+.intro-link-blue {
+  color: #007bff;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.intro-link-blue:hover {
+  color: #0056b3;
+}
+
 .homepage-story {
   display: flex;
   align-items: flex-start;
@@ -202,18 +222,23 @@ main {
   text-align: center;
   min-height: 130px;
   justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
 }
 
 .fll-card {
-  background-color: #680303;
+  background-color: rgba(120, 40, 40, 0.65);
 }
 
 .ftc-card {
-  background-color: #020264;
+  background-color: rgba(30, 30, 120, 0.65);
 }
 
 .mentorship-card {
-  background-color: #DAA520;
+  background-color: rgba(220, 180, 60, 0.65);
 }
 
 .feature-card h2 {
@@ -246,17 +271,17 @@ main {
 }
 
 .fll-card .card-button {
-  background-color: #d76d7d;
+  background-color: rgba(180, 80, 100, 0.65);
   color: white;
 }
 
 .ftc-card .card-button {
-  background-color: #1e3c96;
+  background-color: rgba(50, 70, 150, 0.65);
   color: white;
 }
 
 .mentorship-card .card-button {
-  background-color: #FFA500;
+  background-color: rgba(240, 190, 90, 0.65);
   color: white;
 }
 
@@ -735,6 +760,14 @@ main {
   padding: 0 20px;
 }
 
+.search-bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .search-results-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -753,10 +786,9 @@ main {
 }
 
 .video-search-input {
-  width: 100%;
+  flex: 1;
+  min-width: 200px;
   max-width: 600px;
-  margin: 0 auto;
-  display: block;
   padding: 12px 20px;
   font-size: 16px;
   background-color: #222;
@@ -764,6 +796,50 @@ main {
   border: 2px solid #444;
   border-radius: 8px;
   transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.request-video-btn {
+  padding: 10px 18px;
+  font-size: 14px;
+  background: gold;
+  color: #181818;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.request-video-btn:hover {
+  background: #ffd700;
+  transform: translateY(-2px);
+}
+
+.request-video-btn:active {
+  transform: translateY(0);
+}
+
+.subscribe-btn {
+  padding: 10px 18px;
+  font-size: 14px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.subscribe-btn:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+.subscribe-btn:active {
+  transform: translateY(0);
 }
 
 .video-search-input:focus {
@@ -801,3 +877,171 @@ main {
   font-size: 18px;
 }
 
+/* Video Request Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #222;
+  margin: 5% auto;
+  padding: 30px;
+  border: 2px solid gold;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  color: white;
+  position: relative;
+}
+
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: gold;
+}
+
+.modal-content h2 {
+  color: gold;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+.form-description {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.form-note {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin: -10px 0 15px 0;
+  font-style: italic;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ccc;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  background-color: #333;
+  color: white;
+  border: 2px solid #444;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: gold;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: gold;
+  color: #181818;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background: #ffd700;
+  transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn:disabled:hover {
+  background: #666;
+  transform: none;
+}
+
+.form-message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.form-message.success {
+  background-color: #28a745;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .search-bar-wrapper {
+    flex-direction: column;
+  }
+  
+  .video-search-input {
+    width: 100%;
+  }
+  
+  .request-video-btn,
+  .subscribe-btn {
+    width: 100%;
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+    padding: 20px;
+  }
+}

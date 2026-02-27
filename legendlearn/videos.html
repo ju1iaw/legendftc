@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -34,7 +34,11 @@
       
       <div class="tab-content active" id="ftc-content">
         <div class="video-search-container">
-          <input type="text" id="video-search" class="video-search-input" placeholder="Search videos by title...">
+          <div class="search-bar-wrapper">
+            <input type="text" id="video-search" class="video-search-input" placeholder="Search videos by title...">
+            <button class="request-video-btn" onclick="openVideoRequestModal()">Request a Video</button>
+            <button class="subscribe-btn" onclick="openSubscribeModal()">Subscribe</button>
+          </div>
         </div>
         <div id="search-results-container" class="search-results-container hidden">
           <h3>Search Results</h3>
@@ -129,6 +133,258 @@
       <p><span class="legendlearn-word">LegendLearn</span>: a quality & accessible entry into competition robotics</p>
     </div>
   </footer>
+  
+  <!-- Video Request Modal -->
+  <div id="video-request-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeVideoRequestModal()">&times;</span>
+      <h2>Request a Video</h2>
+      <p class="form-description">We'll contact you by number and email once the video is up.</p>
+      <form id="video-request-form" onsubmit="submitVideoRequest(event)">
+        <div class="form-group">
+          <label for="requester-name">Your Name</label>
+          <input type="text" id="requester-name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="requester-email">Your Email</label>
+          <input type="email" id="requester-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="requester-phone">Your Phone Number</label>
+          <input type="tel" id="requester-phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="video-topic">Video Topic/Title</label>
+          <input type="text" id="video-topic" name="topic" required>
+        </div>
+        <div class="form-group">
+          <label for="video-description">Description (What should the video cover?)</label>
+          <textarea id="video-description" name="description" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="video-category">Category</label>
+          <select id="video-category" name="category" required>
+            <option value="">Select a category</option>
+            <option value="hardware">Hardware</option>
+            <option value="software">Software</option>
+            <option value="outreach">Outreach</option>
+            <option value="general">General</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Submit Request</button>
+      </form>
+      <div id="form-success-message" class="form-message success" style="display: none;">
+        Thank you! Your video request has been submitted.
+      </div>
+    </div>
+  </div>
+  
+  <!-- Subscribe Modal -->
+  <div id="subscribe-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeSubscribeModal()">&times;</span>
+      <h2>Subscribe</h2>
+      <p class="form-description">Get notified when we release new videos! Provide your email and/or phone number.</p>
+      <form id="subscribe-form" onsubmit="submitSubscribe(event)">
+        <div class="form-group">
+          <label for="subscriber-email">Your Email (optional)</label>
+          <input type="email" id="subscriber-email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="subscriber-phone">Your Phone Number (optional)</label>
+          <input type="tel" id="subscriber-phone" name="phone">
+        </div>
+        <p class="form-note">Please provide at least one contact method (email or phone).</p>
+        <button type="submit" class="submit-btn">Subscribe</button>
+      </form>
+      <div id="subscribe-success-message" class="form-message success" style="display: none;">
+        Thank you for subscribing! We'll notify you when new videos are released.
+      </div>
+    </div>
+  </div>
+  
   <script src="script.js"></script>
+  <script>
+    // Video Request Modal Functions
+    function openVideoRequestModal() {
+      document.getElementById('video-request-modal').style.display = 'block';
+    }
+    
+    function closeVideoRequestModal() {
+      document.getElementById('video-request-modal').style.display = 'none';
+      document.getElementById('video-request-form').reset();
+      document.getElementById('form-success-message').style.display = 'none';
+    }
+    
+    // IMPORTANT: Replace this with your Google Apps Script Web App URL
+    // Get this URL after setting up the Google Sheet (see instructions below)
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwf-I5xNc1IWNsBkBqatbqQtv_eFAdf52UxEISMFrnFj-nvhYYSI-74rgSLkH8oTkXlGA/exec'; // Add your Google Apps Script URL here
+    
+    function submitVideoRequest(event) {
+      event.preventDefault();
+      
+      const submitBtn = event.target.querySelector('.submit-btn');
+      const originalBtnText = submitBtn.textContent;
+      
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+      
+      const formData = {
+        name: document.getElementById('requester-name').value,
+        email: document.getElementById('requester-email').value,
+        phone: document.getElementById('requester-phone').value,
+        topic: document.getElementById('video-topic').value,
+        description: document.getElementById('video-description').value,
+        category: document.getElementById('video-category').value,
+        timestamp: new Date().toISOString()
+      };
+      
+      // If Google Script URL is set, send to Google Sheets
+      if (GOOGLE_SCRIPT_URL) {
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(() => {
+          // Success - show message
+          document.getElementById('form-success-message').style.display = 'block';
+          document.getElementById('video-request-form').reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+          
+          // Close modal after 2 seconds
+          setTimeout(() => {
+            closeVideoRequestModal();
+          }, 2000);
+        })
+        .catch((error) => {
+          // Error handling
+          console.error('Error submitting form:', error);
+          alert('There was an error submitting your request. Please try again later.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        });
+      } else {
+        // Fallback to localStorage if Google Script URL not set
+        let requests = JSON.parse(localStorage.getItem('videoRequests') || '[]');
+        requests.push(formData);
+        localStorage.setItem('videoRequests', JSON.stringify(requests));
+        
+        // Show success message
+        document.getElementById('form-success-message').style.display = 'block';
+        document.getElementById('video-request-form').reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+        
+        // Close modal after 2 seconds
+        setTimeout(() => {
+          closeVideoRequestModal();
+        }, 2000);
+      }
+    }
+    
+    // Subscribe Modal Functions
+    const SUBSCRIBE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZStZ6XBZRe1X_2ET15Krqcl05XlHXNL8L5j7d9AiyzFfjQPWYAu3Lsw_EuI0u5Z50/exec'; // Add your Google Apps Script URL for subscriptions here
+    
+    function openSubscribeModal() {
+      document.getElementById('subscribe-modal').style.display = 'block';
+    }
+    
+    function closeSubscribeModal() {
+      document.getElementById('subscribe-modal').style.display = 'none';
+      document.getElementById('subscribe-form').reset();
+      document.getElementById('subscribe-success-message').style.display = 'none';
+    }
+    
+    function submitSubscribe(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('subscriber-email').value.trim();
+      const phone = document.getElementById('subscriber-phone').value.trim();
+      
+      // Validate that at least one contact method is provided
+      if (!email && !phone) {
+        alert('Please provide at least one contact method (email or phone number).');
+        return;
+      }
+      
+      const submitBtn = event.target.querySelector('.submit-btn');
+      const originalBtnText = submitBtn.textContent;
+      
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+      
+      const formData = {
+        email: email || '',
+        phone: phone || '',
+        timestamp: new Date().toISOString()
+      };
+      
+      // If Google Script URL is set, send to Google Sheets
+      if (SUBSCRIBE_SCRIPT_URL) {
+        fetch(SUBSCRIBE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(() => {
+          // Success - show message
+          document.getElementById('subscribe-success-message').style.display = 'block';
+          document.getElementById('subscribe-form').reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+          
+          // Close modal after 2 seconds
+          setTimeout(() => {
+            closeSubscribeModal();
+          }, 2000);
+        })
+        .catch((error) => {
+          // Error handling
+          console.error('Error submitting subscription:', error);
+          alert('There was an error submitting your subscription. Please try again later.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        });
+      } else {
+        // Fallback to localStorage if Google Script URL not set
+        let subscriptions = JSON.parse(localStorage.getItem('subscriptions') || '[]');
+        subscriptions.push(formData);
+        localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
+        
+        // Show success message
+        document.getElementById('subscribe-success-message').style.display = 'block';
+        document.getElementById('subscribe-form').reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+        
+        // Close modal after 2 seconds
+        setTimeout(() => {
+          closeSubscribeModal();
+        }, 2000);
+      }
+    }
+    
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const videoModal = document.getElementById('video-request-modal');
+      const subscribeModal = document.getElementById('subscribe-modal');
+      if (event.target == videoModal) {
+        closeVideoRequestModal();
+      }
+      if (event.target == subscribeModal) {
+        closeSubscribeModal();
+      }
+    }
+  </script>
 </body>
 </html>
