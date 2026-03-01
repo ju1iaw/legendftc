@@ -375,7 +375,7 @@ main {
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
   border-bottom: 2px solid #333;
   padding-bottom: 10px;
 }
@@ -405,7 +405,7 @@ main {
 .sub-tab-content {
   display: none;
   text-align: left;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .sub-tab-content.active {
@@ -415,7 +415,8 @@ main {
 .sub-tab-content h3 {
   color: gold;
   font-size: 24px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  margin-top: 0;
 }
 
 .sub-tab-content p {
