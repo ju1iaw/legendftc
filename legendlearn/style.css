@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 body {
   margin: 0;
   background-color: #111;
   color: white;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Rubik', sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6,
+strong, b {
+  font-weight: 500;
 }
 
 header {
@@ -245,7 +252,7 @@ main {
   margin: 0 0 20px 0;
   font-size: 24px;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .card-image-placeholder {
@@ -306,7 +313,7 @@ main {
   color: white;
   background-color: #111;
   padding: 50px 20px;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 .tabs-container {
@@ -333,7 +340,7 @@ main {
   font-size: 18px;
   font-weight: 500;
   transition: color 0.3s, border-color 0.3s;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 .tab-button:hover {
@@ -390,7 +397,7 @@ main {
   font-size: 16px;
   font-weight: 500;
   transition: color 0.3s, border-color 0.3s;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 .sub-tab-button:hover {
@@ -465,7 +472,7 @@ main {
   text-decoration: none;
   border-radius: 8px;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 500;
   transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
   box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
@@ -686,7 +693,7 @@ footer {
   margin: 0 0 8px 0;
   color: gold;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   text-align: center;
 }
 
@@ -807,7 +814,7 @@ main {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 500;
   transition: background 0.3s, transform 0.2s;
   white-space: nowrap;
 }
@@ -829,7 +836,7 @@ main {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 500;
   transition: background 0.3s, transform 0.2s;
   white-space: nowrap;
 }
@@ -907,7 +914,7 @@ main {
   color: #aaa;
   float: right;
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
   position: absolute;
   right: 20px;
@@ -987,7 +994,7 @@ main {
   border: none;
   border-radius: 8px;
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
   margin-top: 10px;

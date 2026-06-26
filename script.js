@@ -67,3 +67,68 @@ document.addEventListener('DOMContentLoaded', function() {
   // Hide the data container
   allEventsData.style.display = 'none';
 });
+
+(function () {
+  const SEASON_ID = 'season';
+  const DURATION = 1100;
+
+  function getScrollOffset() {
+    const header = document.querySelector('header');
+    return header ? header.offsetHeight + 12 : 20;
+  }
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function scrollToSeason() {
+    const el = document.getElementById(SEASON_ID);
+    if (!el) return;
+
+    const targetY = el.getBoundingClientRect().top + window.scrollY - getScrollOffset();
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, targetY);
+      return;
+    }
+
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    let startTime = null;
+
+    function step(now) {
+      if (startTime === null) startTime = now;
+      const progress = Math.min((now - startTime) / DURATION, 1);
+      window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function initSeasonScroll() {
+    if (!document.getElementById(SEASON_ID)) return;
+
+    document.querySelectorAll('a[href="#season"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        history.pushState(null, '', '#season');
+        scrollToSeason();
+      });
+    });
+
+    if (window.location.hash === '#season') {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+      window.scrollTo(0, 0);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(scrollToSeason);
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSeasonScroll);
+  } else {
+    initSeasonScroll();
+  }
+})();

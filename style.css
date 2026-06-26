@@ -1,46 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --header-height: 52px;
+}
+
 body {
   margin: 0;
+  padding-top: var(--header-height);
   background-color: #111;
   color: white;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Rubik', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+strong, b {
+  font-weight: 500;
 }
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 50px 20px 50px;
+  padding: 8px 40px;
+  background: rgba(17, 17, 17, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   text-decoration: none;
   color: inherit;
 }
 
 .logo img {
-  height: 50px;
+  height: 36px;
 }
 
 .logo h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 18px;
   color: gold;
 }
 
 .logo p {
   margin: 0;
-  font-size: 14px;
+  font-size: 11px;
   color: #ccc;
 }
 
 nav a {
-  margin-left: 25px;
+  margin-left: 20px;
   text-decoration: none;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   transition: color 0.3s;
 }
 
@@ -51,7 +76,57 @@ nav a:focus {
 
 main {
   text-align: center;
-  padding: 50px 20px;
+  padding: 0;
+}
+
+.hero-strip {
+  position: relative;
+  overflow: hidden;
+  padding: 50px 20px 56px;
+}
+
+.hero-banner-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-banner-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-banner-track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  animation: hero-banner-scroll 90s linear infinite;
+}
+
+.hero-banner-track img {
+  height: 100%;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+@keyframes hero-banner-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.hero-strip-content {
+  position: relative;
+  z-index: 1;
 }
 
 .centered-text h2 {
@@ -61,59 +136,20 @@ main {
 }
 
 .centered-text p {
-  font-size: 35px;
+  font-size: 25px;
   margin-top: 5px;
 }
 
-/* Slideshow Styles */
-.slideshow-wrapper-outer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  width: 60%;
-  max-width: 700px;
+.hero-robot {
+  width: 42%;
+  max-width: 440px;
   margin: 10px auto 0;
 }
 
-.slideshow-container {
-  position: relative;
-  width: 100%;
-  flex: 1;
-}
-
-.slideshow-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.slide {
-  display: none;
+.hero-robot img {
   width: 100%;
   height: auto;
-}
-
-.slide.active {
   display: block;
-}
-
-.slideshow-arrow {
-  background: rgba(0, 0, 0, 0.3);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 15px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s;
-  opacity: 0.7;
-  flex-shrink: 0;
-}
-
-.slideshow-arrow:hover {
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 1;
 }
 
 .social-icons {
@@ -126,11 +162,49 @@ main {
 .social-icons img {
   width: 50px;
   height: 50px;
-  transition: transform 0.3s;
+  object-fit: contain;
+  transition: filter 0.25s ease;
 }
 
-.social-icons img:hover {
-  transform: scale(1.2);
+.social-icons .legendlearn-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.social-icons .legendlearn-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.20);
+  filter: brightness(0) invert(1);
+}
+
+.social-icons a:hover img {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(89%) saturate(500%) hue-rotate(360deg) brightness(103%);
+}
+
+.social-icons a:hover .legendlearn-icon {
+  filter: none;
+}
+
+.hero-email {
+  display: inline-block;
+  margin: 18px 0 0;
+  color: #ccc;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.hero-email:hover,
+.hero-email:focus {
+  color: gold;
 }
 
 /* About us section */
@@ -153,8 +227,12 @@ main {
   text-align: center;
   color: white;
   background-color: #111;
-  padding: 50px 20px;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 65px 20px 50px;
+  font-family: 'Rubik', sans-serif;
+}
+
+#season {
+  scroll-margin-top: calc(var(--header-height) + 12px);
 }
 
 .season-page h1 {
@@ -162,6 +240,10 @@ main {
   margin-bottom: 10px;
   text-align: center;
   color: white;
+}
+
+.season-page h1:first-child {
+  margin-top: 0;
 }
 
 /* Section titles */
@@ -197,8 +279,12 @@ main {
 }
 
 .achievements strong {
-  font-weight: bold;
+  font-weight: 500;
   color: white;
+}
+
+.achievements p {
+  color: #999;
 }
 /* Outreach Grid Styling */
 .outreach-page {
@@ -312,7 +398,7 @@ main {
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
@@ -503,9 +589,26 @@ h2 {
   margin-bottom: 10px;
 }
 
+.team-members,
+.alumni-section,
 .current-members {
-  margin-top: 60px;
+  margin-top: 40px;
   text-align: center;
+}
+
+.team-members h3,
+.alumni-section h3,
+.current-members h2 {
+  font-size: 1.6rem;
+  margin-bottom: 28px;
+}
+
+.team-members h3 {
+  color: aquamarine;
+}
+
+.alumni-section h3 {
+  color: #c9a0dc;
 }
 
 .current-members h2 {
@@ -632,7 +735,7 @@ h2 {
 
 /* Role color coding */
 .role {
-  font-weight: bold;
+  font-weight: 500;
 }
 .role.outreach {
   color: gold;
@@ -694,7 +797,7 @@ h2 {
   font-size: 1.3rem;
   color: gold;
   margin-bottom: 0px;
-  font-weight: bold;
+  font-weight: 500;
   letter-spacing: 1px;
 }
 
@@ -707,7 +810,7 @@ h2 {
   transform: translateX(-50%) scale(0.95);
   background: gold;
   color: #181818;
-  font-weight: bold;
+  font-weight: 500;
   border: none;
   border-radius: 2px;
   padding: 3px 14px;
@@ -812,7 +915,7 @@ h2 {
 
 .event-title {
   color: white;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.1rem;
   flex: 1;
   min-width: 200px;

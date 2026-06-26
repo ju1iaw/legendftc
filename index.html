@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <title>Team Legend</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    if (location.hash === '#season') {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -16,7 +21,7 @@
     </a>
     <nav>
       <a href="index.html">Home</a>
-      <a href="seasons.html">Season</a>
+      <a href="#season">Season</a>
       <a href="team.html">Team</a>
       <a href="LegendLearn.html">LegendLearn</a>
       <a href="sponsors.html">Sponsors</a>
@@ -24,86 +29,114 @@
   </header>
 
   <main>
-    <div class="centered-text">
-      <h2>Team Legend</h2>
-      <p>FTC #21227</p>
-    </div>
-    
-    <div class="slideshow-wrapper-outer">
-      <button class="slideshow-arrow prev" onclick="changeSlide(-1)">❮</button>
-      <div class="slideshow-container">
-        <div class="slideshow-wrapper">
-          <img src="media/homepage_robot.png" alt="robot" class = "slide">
-          <img src="media/020726MVQT.JPG" alt="mountain view qualifier 2026" class="slide active">
+    <section class="hero-strip">
+      <div class="hero-banner-bg" aria-hidden="true">
+        <div class="hero-banner-track">
+          <img src="media/Untitled.png" alt="">
+          <img src="media/Untitled.png" alt="">
         </div>
       </div>
-      <button class="slideshow-arrow next" onclick="changeSlide(1)">❯</button>
-    </div>
-    <div class="social-icons">
-      <a href="http://instagram.com/legendftc" target="_blank"><img src="media/instagram.png" alt="instagram"></a>
-      <a href="https://www.youtube.com/@legendftc" target="_blank"><img src="media/youtube.png" alt="youtube"></a>
-      <a href="https://ftcscout.org/team/21227" target="_blank"><img src="media/ftcscout.png" alt="ftcscout"></a>
-      <a href="mailto:teamlegendftc@gmail.com"><img src="media/gmail.png" alt="gmail"></a>
-    </div>
+      <div class="hero-strip-content">
+        <div class="centered-text">
+          <h2>Team Legend</h2>
+          <p>FTC #21227 | Fremont, CA, USA </p>
+        </div>
 
-    <div class="homepage-boxes">
-      <div class="expandable-box">
-        <img src="media/seasons.png" alt="Season" class="box-image">
-        <div class="box-label">Season</div>
-        <div class="box-desc">Our current and past robots & awards.</div>
-        <a href="seasons.html" class="view-more-btn">View More</a>
+        <div class="hero-robot">
+          <img src="media/homepage_robot.png" alt="Legend robot">
+        </div>
+
+        <div class="social-icons">
+          <a href="http://instagram.com/legendftc" target="_blank" rel="noopener noreferrer"><img src="media/instagram.png" alt="Instagram"></a>
+          <a href="https://www.youtube.com/@legendftc" target="_blank" rel="noopener noreferrer"><img src="media/youtube.png" alt="YouTube"></a>
+          <a href="https://ftcscout.org/team/21227" target="_blank" rel="noopener noreferrer"><img src="media/ftcscout.png" alt="FTC Scout"></a>
+          <a href="legendlearn/index.html" class="legendlearn-link"><img src="media/legend_logo.png" alt="LegendLearn" class="legendlearn-icon"></a>
+        </div>
+        <a href="mailto:teamlegendftc@gmail.com" class="hero-email">teamlegendftc@gmail.com</a>
       </div>
-      <div class="expandable-box">
-        <img src="media/team_page.png" alt="Team" class="box-image">
-        <div class="box-label">Team</div>
-        <div class="box-desc">Our team & members.</div>
-        <a href="team.html" class="view-more-btn">View More</a>
+    </section>
+
+    <section class="season-page" id="season">
+      <h1>2025–2026: FTC DECODE</h1>
+
+      <h2 class="section-title">Season Videos</h2>
+      <div class="video-grid">
+        <iframe src="https://www.youtube.com/embed/WHW2477A0c8" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/z7nzPRMkl5E" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/sl17ZkgOkF4" frameborder="0" allowfullscreen></iframe>
       </div>
-      <div class="expandable-box">
-        <img src="media/outreach_page.png" alt="Outreach" class="box-image">
-        <div class="box-label">Outreach</div>
-        <div class="box-desc">Our impact beyond FTC.</div>
-        <a href="LegendLearn.html" class="view-more-btn">View More</a>
+
+      <h2 class="section-title">Season Achievements</h2>
+      <div class="achievements">
+        <p><strong>6/18-6/21/2026: Michiana Premier Event</strong><br>
+          Finalist Alliance, Division Winning Alliance<br>
+          World #60 npOPR - 175.39<br>
+          World #13 Auto OPR - 56.32</p>
+        <p><strong>2/28/2026: NorCal Regional Championship</strong><br>
+          Silicon Division Alliance #3<br>
+          NorCal OPR #12</p>
+        <p><strong>2/7/2026: Mountain View QT</strong><br>
+          Winning Alliance Captain; Inspire Award 2nd Place<br>
+          NorCal #2 npOPR- 142.82</p>
+        <p><strong>11/25/2025: The Play Space QT #3</strong><br>
+          Third Alliance Captain<br>
+          Control Award Winner</p>
       </div>
-    </div>
-    <div class="about-us">
-      <p>
-        Legend is a 4th-year robotics team based in Fremont, CA, competing in the FIRST Tech Challenge. From our rookie season (2022) to the present, we've grown as individuals and as a team through FIRST. Currently, we're ranked among the top teams in NorCal and the world. We strive to maintain robotics excellence and community impact with the values of FIRST.
-      </p>
-    </div>
+      <h1>2024–2025: FTC Into the Deep</h1>
+
+      <h2 class="section-title">Season Videos</h2>
+      <div class="video-grid">
+        <iframe src="https://www.youtube.com/embed/Cv-TOEtS6Uk" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/KJHg72F5opc" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/2Ed7mGAUI6A" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <h2 class="section-title">Season Achievements</h2>
+      <div class="achievements">
+        <p><strong>7/27/2025: FTC Lobster Cup World Invitational</strong><br>
+          Winning Alliance Captain & Event Champion<br>
+          Arthropods Division 1st Alliance Captain<br>
+          NorCAL Record: 404 NP w/ Reflection #19859<br></p>
+
+        <p><strong>6/28-6/29/25: FTC Kentucky Run for the Robots Premier Event</strong><br>
+        MoW Division 1st Alliance Captain<br>
+        380 NP w/ SEN #25434<br>
+        Innovate Award</p>
+
+        <p><strong>2/23/2025: NorCal Regional Championships</strong><br>
+        Gold Division Playoffs – Alliance #3 Captain<br>
+        NorCal #2 npOPR – 193.43<br>
+        352 NP w/ RoboAvatars #7303</p>
+
+        <p><strong>1/18/2025:SCHS QT #3</strong><br>
+        Winning Captain; Innovate Award 1st Place<br>
+        Norcal #1 ranked team; 174.71 npOPR<br>
+        323 NP w/ Hyperion #9614; CA 3rd Highest</p>
+
+        <p><strong>1/11/2025: FHS QT #2</strong><br>
+        Finalist Captain; Think Award 1st place</p>
+
+        <p><strong>11/23/2024: Bellarmine QT #1</strong><br>
+        Winning Alliance; Think Award 1st place<br>
+        California Record with #9614 Hyperion, 252 NP</p>
+      </div>
+      <h1>2023–2024: FTC CenterStage</h1>
+      <h2 class="section-title">Season Achievements</h2>
+      <div class="achievements">
+        <p><strong>1/20/2024: San Jose QT #2</strong><br>
+          Finalist Alliance 1st pick; Innovate Award 1st Place</p>
+
+        <p><strong>12/16/2023: San Jose QT #1</strong><br>
+          Connect Award 1st Place </p>
+      </div>
+      <h1>2022–2023: FTC PowerPlay</h1>
+      <h2 class="section-title">Season Achievements</h2>
+      <div class="achievements">
+        <p>This was our rookie year in FTC.</p>
+      </div>
+    </section>
 
   </main>
-  <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    
-    function showSlide(index) {
-      // Wrap around if out of bounds
-      if (index >= slides.length) {
-        currentSlide = 0;
-      } else if (index < 0) {
-        currentSlide = slides.length - 1;
-      } else {
-        currentSlide = index;
-      }
-      
-      // Hide all slides
-      slides.forEach(slide => slide.classList.remove('active'));
-      
-      // Show current slide
-      if (slides[currentSlide]) {
-        slides[currentSlide].classList.add('active');
-      }
-    }
-    
-    function changeSlide(direction) {
-      showSlide(currentSlide + direction);
-    }
-    
-    // Initialize: show first slide (robot image)
-    document.addEventListener('DOMContentLoaded', function() {
-      showSlide(0);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
