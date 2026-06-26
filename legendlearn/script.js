@@ -1,11 +1,3 @@
-function toggleCard(card) {
-  card.classList.toggle('expanded');
-}
-
-function showContactInfo(info) {
-  document.getElementById('contact-info-box').innerText = info || "Click an icon to view contact details.";
-}
-
 // Tab switching functionality for seasons page
 document.addEventListener('DOMContentLoaded', function() {
   const tabButtons = document.querySelectorAll('.tab-button');
