@@ -118,9 +118,71 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSeasonScroll);
-  } else {
+  function initSeasonNavHighlight() {
+    const nav = document.querySelector('.season-nav');
+    if (!nav) return;
+
+    const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+    const sections = links
+      .map(function (link) {
+        return document.getElementById(link.getAttribute('href').slice(1));
+      })
+      .filter(Boolean);
+
+    if (!sections.length) return;
+
+    let forcedId = null;
+    let ignoreScrollUntil = 0;
+
+    function setActive(id) {
+      links.forEach(function (link) {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+
+    function updateActiveFromScroll() {
+      if (forcedId) {
+        if (Date.now() < ignoreScrollUntil) {
+          setActive(forcedId);
+          return;
+        }
+        forcedId = null;
+      }
+
+      const marker = getScrollOffset() + 8;
+      let current = sections[0].id;
+
+      for (let i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top <= marker) {
+          current = sections[i].id;
+        }
+      }
+
+      setActive(current);
+    }
+
+    links.forEach(function (link) {
+      link.addEventListener('click', function () {
+        const id = link.getAttribute('href').slice(1);
+        forcedId = id;
+        ignoreScrollUntil = Date.now() + 900;
+        setActive(id);
+      });
+    });
+
+    window.addEventListener('scroll', updateActiveFromScroll, { passive: true });
+    window.addEventListener('resize', updateActiveFromScroll);
+    updateActiveFromScroll();
+  }
+
+  function init() {
     initSeasonScroll();
+    initSeasonNavHighlight();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();

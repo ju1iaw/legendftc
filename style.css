@@ -233,6 +233,10 @@ main {
 }
 
 .season-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 900px) minmax(0, 1fr);
+  column-gap: 28px;
+  align-items: start;
   text-align: center;
   color: white;
   background-color: #111;
@@ -244,15 +248,69 @@ main {
   scroll-margin-top: calc(var(--header-height) + 12px);
 }
 
+.season-nav {
+  grid-column: 1;
+  justify-self: end;
+  width: min(200px, 100%);
+  position: sticky;
+  top: calc(var(--header-height) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+  padding-top: 4px;
+}
+
+.season-nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.35;
+  padding: 6px 10px;
+  margin: 0 -10px;
+  border-radius: 6px;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.season-nav a:hover,
+.season-nav a:focus {
+  color: gold;
+}
+
+.season-nav a.active {
+  color: #fff;
+  background-color: rgba(255, 215, 0, 0.22);
+}
+
+.season-content {
+  grid-column: 2;
+  min-width: 0;
+}
+
 .season-page h1 {
   font-size: 32px;
   margin-bottom: 10px;
   text-align: center;
   color: white;
+  scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
 .season-page h1:first-child {
   margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .season-page {
+    grid-template-columns: 1fr;
+  }
+
+  .season-nav {
+    display: none;
+  }
+
+  .season-content {
+    grid-column: 1;
+  }
 }
 
 /* Section titles */
@@ -261,6 +319,27 @@ main {
   color: gold;
   margin-bottom: 30px;
   text-align: center;
+}
+
+.achievements-scout-link {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin-left: 8px;
+  line-height: 0;
+}
+
+.achievements-scout-link img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+.achievements-scout-link:hover img,
+.achievements-scout-link:focus img {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(89%) saturate(500%) hue-rotate(360deg) brightness(103%);
 }
 
 .video-grid {
